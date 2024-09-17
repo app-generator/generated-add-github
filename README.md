@@ -4,7 +4,7 @@ Starter built with [App Generator](https://app-generator.dev/) - Actively suppor
 
 In order to use the sources, follow the build instructions as presented in `Start with Docker` and `Manual Build` sections. 
 
-<br />
+<br /> 
 
 ## Features: 
 
