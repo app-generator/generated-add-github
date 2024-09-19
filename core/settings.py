@@ -58,6 +58,11 @@ INSTALLED_APPS = [
     "django_api_gen",
     "rest_framework",
     "rest_framework.authtoken",
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
 ]
 
 
@@ -70,6 +75,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    # allauth 
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -187,3 +195,20 @@ REST_FRAMEWORK = {
 }
 
 # __API_GENERATOR__END
+
+
+GITHUB_CLIENT_ID  = os.getenv("GITHUB_CLIENT_ID" , "")
+GITHUB_SECRET_KEY = os.getenv("GITHUB_SECRET_KEY", "") 
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'read:user',
+            'user:email'
+        ],        
+        "APP": {
+            "client_id": GITHUB_CLIENT_ID,
+            "secret": GITHUB_SECRET_KEY,
+        },
+    },
+}
