@@ -15,6 +15,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("admin_datta.urls")),
     path("login/jwt/", view=obtain_auth_token),
+    path('accounts/', include('allauth.urls')),
 ]
 
 
